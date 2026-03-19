@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE users ADD COLUMN IF NOT EXISTS loginMethod VARCHAR(64) DEFAULT 'email' AFTER email;\nALTER TABLE users ADD COLUMN IF NOT EXISTS passwordHash VARCHAR(255) AFTER loginMethod;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 31WfrWzKdT9y6yg.1ad5d6d9bbac --database mDJbhZThnmgq57e2ZxHzfD --execute ALTER TABLE users ADD COLUMN IF NOT EXISTS loginMethod VARCHAR(64) DEFAULT 'email' AFTER email;\nALTER TABLE users ADD COLUMN IF NOT EXISTS passwordHash VARCHAR(255) AFTER loginMethod;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 53
+}

@@ -1,0 +1,8 @@
+{
+  "query": "\n-- Resetear el uso mensual de todos los usuarios para el mes actual\nDELETE FROM monthly_usage WHERE month = DATE_FORMAT(NOW(), '%Y-%m');\n\n-- Ver cuántas generaciones tiene el usuario de prueba\nSELECT u.email, u.name, s.plan, mu.count, mu.month \nFROM users u \nLEFT JOIN subscriptions s ON s.user_id = u.id \nLEFT JOIN monthly_usage mu ON mu.user_id = u.id \nORDER BY u.created_at DESC \nLIMIT 10;\n",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 31WfrWzKdT9y6yg.1ad5d6d9bbac --database mDJbhZThnmgq57e2ZxHzfD --execute \n-- Resetear el uso mensual de todos los usuarios para el mes actual\nDELETE FROM monthly_usage WHERE month = DATE_FORMAT(NOW(), '%Y-%m');\n\n-- Ver cuántas generaciones tiene el usuario de prueba\nSELECT u.email, u.name, s.plan, mu.count, mu.month \nFROM users u \nLEFT JOIN subscriptions s ON s.user_id = u.id \nLEFT JOIN monthly_usage mu ON mu.user_id = u.id \nORDER BY u.created_at DESC \nLIMIT 10;\n",
+  "returncode": 1,
+  "logs": [
+    "ERROR 1054 (42S22) at line 6: Unknown column 's.user_id' in 'on clause'"
+  ]
+}

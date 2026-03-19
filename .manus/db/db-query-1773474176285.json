@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE `generations` MODIFY COLUMN `type` varchar(64) NOT NULL;\nALTER TABLE `generations` ADD `industry` varchar(64) DEFAULT 'general' NOT NULL;\nALTER TABLE `generations` ADD `imageUrl` text;\nALTER TABLE `generations` ADD `tone` varchar(32) DEFAULT 'professional' NOT NULL;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 31WfrWzKdT9y6yg.1ad5d6d9bbac --database mDJbhZThnmgq57e2ZxHzfD --execute ALTER TABLE `generations` MODIFY COLUMN `type` varchar(64) NOT NULL;\nALTER TABLE `generations` ADD `industry` varchar(64) DEFAULT 'general' NOT NULL;\nALTER TABLE `generations` ADD `imageUrl` text;\nALTER TABLE `generations` ADD `tone` varchar(32) DEFAULT 'professional' NOT NULL;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 1430
+}

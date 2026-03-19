@@ -1,0 +1,43 @@
+{
+  "query": "SHOW TABLES; DESCRIBE monthly_usage;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 31WfrWzKdT9y6yg.1ad5d6d9bbac --database mDJbhZThnmgq57e2ZxHzfD --execute SHOW TABLES; DESCRIBE monthly_usage;",
+  "rows": [
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "__drizzle_migrations"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "generations"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "monthly_usage"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "subscriptions"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "users"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "Field\tType\tNull\tKey\tDefault\tExtra"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "id\tint\tNO\tPRI\tNULL\tauto_increment"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "userId\tint\tNO\t\tNULL\t"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "month\tvarchar(7)\tNO\t\tNULL\t"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "count\tint\tNO\t\t0\t"
+    },
+    {
+      "Tables_in_mDJbhZThnmgq57e2ZxHzfD": "updatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\tDEFAULT_GENERATED on update CURRENT_TIMESTAMP"
+    }
+  ],
+  "messages": [],
+  "stdout": "Tables_in_mDJbhZThnmgq57e2ZxHzfD\n__drizzle_migrations\ngenerations\nmonthly_usage\nsubscriptions\nusers\nField\tType\tNull\tKey\tDefault\tExtra\nid\tint\tNO\tPRI\tNULL\tauto_increment\nuserId\tint\tNO\t\tNULL\t\nmonth\tvarchar(7)\tNO\t\tNULL\t\ncount\tint\tNO\t\t0\t\nupdatedAt\ttimestamp\tNO\t\tCURRENT_TIMESTAMP\tDEFAULT_GENERATED on update CURRENT_TIMESTAMP\n",
+  "stderr": "",
+  "execution_time_ms": 57
+}

@@ -1,0 +1,9 @@
+{
+  "query": "ALTER TABLE users ADD COLUMN businessDescription TEXT;\nALTER TABLE users ADD COLUMN businessIndustry VARCHAR(64);\nALTER TABLE users ADD COLUMN businessName VARCHAR(255);\nALTER TABLE users ADD COLUMN preferredLanguage ENUM('es','en') DEFAULT 'es';",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway04.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 31WfrWzKdT9y6yg.1ad5d6d9bbac --database mDJbhZThnmgq57e2ZxHzfD --execute ALTER TABLE users ADD COLUMN businessDescription TEXT;\nALTER TABLE users ADD COLUMN businessIndustry VARCHAR(64);\nALTER TABLE users ADD COLUMN businessName VARCHAR(255);\nALTER TABLE users ADD COLUMN preferredLanguage ENUM('es','en') DEFAULT 'es';",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 3066
+}
