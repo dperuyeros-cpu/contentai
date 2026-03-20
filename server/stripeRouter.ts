@@ -4,9 +4,11 @@ import { updateUserPlan } from "./db";
 import { STRIPE_PLANS, type StripePlanKey } from "./stripeProducts";
 import { notifyOwner } from "./_core/notification";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
-  apiVersion: "2026-02-25.clover",
-});
+const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2026-02-25.clover",
+    })
+  : null;
 
 // ─── Crear sesión de checkout ─────────────────────────────────────────────────
 export async function createCheckoutSession(
@@ -17,7 +19,7 @@ export async function createCheckoutSession(
   origin: string,
 ): Promise<string> {
   const plan = STRIPE_PLANS[planKey];
-
+if (!stripe) throw new Error("Stripe not configured");
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     mode: "subscription",
@@ -55,6 +57,10 @@ export async function createCheckoutSession(
 
 // ─── Webhook handler ──────────────────────────────────────────────────────────
 export async function handleStripeWebhook(req: Request, res: Response) {
+  if (!stripe) {
+    return res.status(400).json({ error: "Stripe not configured" });
+  }
+
   const sig = req.headers["stripe-signature"] as string;
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || "";
 
@@ -67,7 +73,6 @@ export async function handleStripeWebhook(req: Request, res: Response) {
     return res.status(400).json({ error: `Webhook Error: ${err.message}` });
   }
 
-  // Manejo de eventos de prueba
   if (event.id.startsWith("evt_test_")) {
     console.log("[Webhook] Test event detected, returning verification response");
     return res.json({ verified: true });
@@ -96,11 +101,8 @@ export async function handleStripeWebhook(req: Request, res: Response) {
       }
 
       case "customer.subscription.deleted": {
-        // Cuando cancela, volver a free
         const subscription = event.data.object as Stripe.Subscription;
         const customerId = subscription.customer as string;
-        // Buscar usuario por stripeSubscriptionId y degradar a free
-        // Por ahora solo logueamos
         console.log(`[Stripe] Suscripción cancelada: ${subscription.id} | Customer: ${customerId}`);
         break;
       }
